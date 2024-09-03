@@ -41,7 +41,7 @@
             <TableColumn fx:id="colUnitPrice" prefWidth="171.19992065429688" text="Unit Price" />
          </columns>
       </TableView>
-      <TextField fx:id="txtCode" layoutX="91.0" layoutY="116.0" prefHeight="26.0" prefWidth="367.0" promptText="Item Code :" />
+      <TextField fx:id="txtCode" layoutX="91.0" layoutY="116.0" onAction="#btnSearchOnAction" prefHeight="26.0" prefWidth="367.0" promptText="Item Code :" />
       <TextField fx:id="txtDescription" layoutX="91.0" layoutY="154.0" prefHeight="26.0" prefWidth="367.0" promptText="Item Description :" />
       <TextField fx:id="txtUnitPrice" layoutX="91.0" layoutY="193.0" prefHeight="26.0" prefWidth="367.0" promptText="Unit Price :" />
       <TextField fx:id="txtQtyOnHand" layoutX="91.0" layoutY="229.0" prefHeight="26.0" prefWidth="367.0" promptText="Qty. on Hand :" />

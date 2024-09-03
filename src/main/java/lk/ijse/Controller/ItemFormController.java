@@ -67,9 +67,48 @@ public class ItemFormController {
     }
 
     private void clearFields() {
-
+        txtCode.setText("");
+        txtDescription.setText("");
+        txtUnitPrice.setText("");
+        txtQtyOnHand.setText("");
     }
 
-    public void btnDeleteOnAction(ActionEvent actionEvent) {
+    public void btnDeleteOnAction(ActionEvent actionEvent) throws ClassNotFoundException {
+        String code = txtCode.getText();
+        String sql = "DELETE FROM item WHERE code=?";
+        try {
+            Connection connection = DBConnection.getDbConnection().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, code);
+
+            boolean isDeleted = pstm.executeUpdate() > 0;
+            if (isDeleted) {
+                new Alert(Alert.AlertType.INFORMATION, "Item is Deleted Successfully").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        clearFields();
+    }
+
+    public void btnSearchOnAction(ActionEvent actionEvent) throws ClassNotFoundException {
+        String code = txtCode.getText();
+        String sql = "SELECT * FROM item WHERE code=?";
+        try {
+            Connection connection = DBConnection.getDbConnection().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, code);
+            java.sql.ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                txtDescription.setText(resultSet.getString("description"));
+                txtUnitPrice.setText(String.valueOf(resultSet.getInt("unitPrice")));
+                txtQtyOnHand.setText(String.valueOf(resultSet.getInt("qty")));
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Item not found").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 }
