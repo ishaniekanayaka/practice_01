@@ -21,8 +21,7 @@ public class MainFormController {
     public Label lblDescription;
     public ImageView imgItem;
     public AnchorPane root;
-    public Label lblItem;
-    public Label lblCustomer;
+
 
 
     public void btnItemOnAction(ActionEvent actionEvent) throws IOException {

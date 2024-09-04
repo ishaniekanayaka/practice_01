@@ -1,6 +1,8 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,17 +10,20 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.Tm.CustomerTm;
 import lk.ijse.db.DBConnection;
 import lk.ijse.model.CustomerDTO;
+import lk.ijse.repo.CustomerRepo;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CustomerFormCotroller {
     public AnchorPane rootsCus;
@@ -31,6 +36,39 @@ public class CustomerFormCotroller {
     public TableColumn<?,?> colCusAddress;
     public JFXButton btnSave;
     public JFXButton btnDelete;
+
+
+    public void initialize() {
+        setCellValueFactory();
+        loadAllCustomers();
+    }
+
+    private void loadAllCustomers() {
+        ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<CustomerDTO> customerList = CustomerRepo.getAll();
+            for (CustomerDTO customer : customerList) {
+                CustomerTm tm = new CustomerTm(
+                        customer.getCustomerId(),
+                        customer.getCustomerName(),
+                        customer.getAddress()
+                );
+                obList.add(tm);
+            }
+            tblCustomer.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colCusId.setCellValueFactory(new PropertyValueFactory<>("CustomerId"));
+        colCusName.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
+        colCusAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+    }
 
     public void btnHomeOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) rootsCus.getScene().getWindow();
@@ -46,20 +84,18 @@ public class CustomerFormCotroller {
         String name = txtCustomerName.getText();
         String address = txtCustomerAddress.getText();
 
-        String sql = "INSERT INTO customer(cusId, name, address) VALUES(?, ?, ?)";
+        CustomerDTO customer = new CustomerDTO(cusId, name, address);
+    //
         try {
-        Connection connection = DBConnection.getDbConnection().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, cusId);
-        pstm.setString(2, name);
-        pstm.setString(3, address);
 
-        boolean isSaved = pstm.executeUpdate() > 0;
+        boolean isSaved = CustomerRepo.save(customer);
         if (isSaved) {
+
             new Alert(Alert.AlertType.INFORMATION, "Customer is Saved Successfully").show();
+            loadAllCustomers();
         }
     } catch (SQLException e) {
-        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.INFORMATION, "Customer is Saved Unsuccessfully").show();
     }
     clearFields();
 }
@@ -73,15 +109,17 @@ public class CustomerFormCotroller {
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         String cusId = txtCustomerId.getText();
-        String sql = "DELETE FROM customer WHERE cusId =?";
-        try {
-            Connection connection = DBConnection.getDbConnection().getConnection();
-            PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setString(1, cusId);
+        String name = txtCustomerName.getText();
+        String address = txtCustomerAddress.getText();
 
-            boolean isDeleted = pstm.executeUpdate() > 0;
+        CustomerDTO customer = new CustomerDTO(cusId, name, address);
+        try {
+
+
+            boolean isDeleted = CustomerRepo.delete(customer);
             if (isDeleted) {
                 new Alert(Alert.AlertType.INFORMATION, "Customer is Deleted Successfully").show();
+                loadAllCustomers();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

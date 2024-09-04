@@ -10,25 +10,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootItem" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ItemFormController">
+<AnchorPane fx:id="rootItem" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ItemFormController">
    <children>
-      <Label layoutX="253.0" layoutY="33.0" prefHeight="62.0" prefWidth="194.0" text="Manage Item">
+      <Label layoutX="253.0" layoutY="33.0" prefHeight="62.0" prefWidth="194.0" text="Manage Item" textAlignment="CENTER" textFill="#125604">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="631.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Icons/homw.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="631.0" layoutY="45.0" onAction="#btnHomeOnAction" prefHeight="45.0" prefWidth="45.0" text="." textFill="#9e9898" />
-      <JFXButton fx:id="btnSave" contentDisplay="CENTER" layoutX="512.0" layoutY="154.0" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #160b56;" text="SAVE" textFill="WHITE">
+      <JFXButton layoutX="14.0" layoutY="11.0" onAction="#btnHomeOnAction" prefHeight="45.0" prefWidth="45.0" text="." textFill="#9e9898" />
+      <JFXButton fx:id="btnSave" contentDisplay="CENTER" layoutX="545.0" layoutY="157.0" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #160b56;" text="SAVE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" contentDisplay="CENTER" layoutX="512.0" layoutY="193.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #054804;" text="DELETE" textFill="WHITE">
+      <JFXButton fx:id="btnDelete" contentDisplay="CENTER" layoutX="545.0" layoutY="196.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #054804;" text="DELETE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -37,15 +37,15 @@
          <columns>
             <TableColumn fx:id="colCode" prefWidth="97.0" text="Code" />
             <TableColumn fx:id="colDescription" prefWidth="204.0" text="Description" />
-            <TableColumn fx:id="colQTYOnHand" prefWidth="141.60003662109375" text="Qty. on Hand" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="171.19992065429688" text="Unit Price" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="141.60003662109375" text="Unit price" />
+            <TableColumn fx:id="colQTYOnHand" prefWidth="171.19992065429688" text="Qty" />
          </columns>
       </TableView>
       <TextField fx:id="txtCode" layoutX="91.0" layoutY="116.0" onAction="#btnSearchOnAction" prefHeight="26.0" prefWidth="367.0" promptText="Item Code :" />
       <TextField fx:id="txtDescription" layoutX="91.0" layoutY="154.0" prefHeight="26.0" prefWidth="367.0" promptText="Item Description :" />
       <TextField fx:id="txtUnitPrice" layoutX="91.0" layoutY="193.0" prefHeight="26.0" prefWidth="367.0" promptText="Unit Price :" />
       <TextField fx:id="txtQtyOnHand" layoutX="91.0" layoutY="229.0" prefHeight="26.0" prefWidth="367.0" promptText="Qty. on Hand :" />
-      <ImageView fitHeight="107.0" fitWidth="124.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="132.0" fitWidth="174.0" layoutX="458.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Icons/item giff.gif" />
          </image>

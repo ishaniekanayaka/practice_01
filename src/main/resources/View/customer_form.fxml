@@ -12,22 +12,22 @@
 
 <AnchorPane fx:id="rootsCus" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerFormCotroller">
    <children>
-      <Label layoutX="217.0" layoutY="26.0" prefHeight="62.0" prefWidth="266.0" text="Manage Customer">
+      <Label layoutX="217.0" layoutY="26.0" prefHeight="62.0" prefWidth="266.0" text="Manage Customer" textFill="#125604">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <ImageView fitHeight="149.0" fitWidth="119.0" layoutX="36.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="149.0" fitWidth="119.0" layoutX="476.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../IJSE/Layered-Architecture-Project/src/main/resources/com/example/layeredarchitecture/assests/images/customers.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="621.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="19.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Icons/homw.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="621.0" layoutY="35.0" onAction="#btnHomeOnAction" prefHeight="45.0" prefWidth="45.0" text="." textFill="#9e9898" />
+      <JFXButton layoutX="19.0" layoutY="20.0" onAction="#btnHomeOnAction" prefHeight="45.0" prefWidth="45.0" text="." textFill="#9e9898" />
       <TextField fx:id="txtCustomerId" layoutX="115.0" layoutY="118.0" onAction="#btnSearchOnAction" prefHeight="26.0" prefWidth="336.0" promptText=" Customer ID" />
       <TextField fx:id="txtCustomerName" layoutX="115.0" layoutY="161.0" prefHeight="26.0" prefWidth="336.0" promptText=" Customer Name" />
       <TextField fx:id="txtCustomerAddress" layoutX="115.0" layoutY="203.0" prefHeight="26.0" prefWidth="336.0" promptText=" Customer Address" />
@@ -38,12 +38,12 @@
             <TableColumn fx:id="colCusAddress" prefWidth="250.39996948242185" text="Customer Address" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnSave" contentDisplay="CENTER" layoutX="524.0" layoutY="137.0" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #160b56;" text="SAVE" textFill="WHITE">
+      <JFXButton fx:id="btnSave" contentDisplay="CENTER" layoutX="536.0" layoutY="141.0" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #160b56;" text="SAVE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" contentDisplay="CENTER" layoutX="524.0" layoutY="176.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #054804;" text="DELETE" textFill="WHITE">
+      <JFXButton fx:id="btnDelete" contentDisplay="CENTER" layoutX="536.0" layoutY="180.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #054804;" text="DELETE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
